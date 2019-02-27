@@ -9,11 +9,14 @@
 <div id="books d-flex flex-row flex-wrap">
 
     @foreach($books as $book)
-        <div class="card book d-inline-flex align-items-stretch m-3" style="width: 15rem; height: 30rem;">
+        <div class="card book d-inline-flex m-3" style="width: 15rem; height: 25rem;">
             <img class="card-img-top" src="{{ $book->image }}" alt="title"/>
             <div class="card-body">
-            <h4 class="card-title" style="font-size:0.75em;">{{ $book->title }}</h4>
-            <h6 class="card-text" style="font-size:0.4em;">{{ $book->authors }}</h6>
+            <h4 class="card-title" style="font-size:0.9em;">{{ $book->title }}</h4>
+            <h6 class="card-text" style="font-size:0.7em;">{{ $book->authors }}</h6>
+            @if($book->publisher)
+            <h6 class="card-text" style="font-size:0.5em;">{{ $book->publisher }}</h6>
+            @endif
             <a href="{{ action('BookController@edit', $book->id) }}" class="btn btn-primary">              
                 Edit</a>
             </div>

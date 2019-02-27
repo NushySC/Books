@@ -19,6 +19,17 @@
             <label>Image</label>
             <input type="text" name="image" class="form-control">
         </div>
+
+        <div class="form-group">
+            <label>Publisher</label>
+            <select name="publisher_id" class="form-control">
+
+                @foreach($publishers as $publisher)
+                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                @endforeach
+
+            </select>
+          </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     

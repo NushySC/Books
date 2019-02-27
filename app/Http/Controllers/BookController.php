@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Book;
+use App\Publisher; // REMEMBER TO PUT THIS STUFF HERE
 
 class BookController extends Controller
 {
@@ -25,8 +26,10 @@ class BookController extends Controller
 
 
     public function create()
-    {
-        return view('books.create');
+
+    {   
+        $publishers = Publisher::all();
+        return view('books/create', compact(['publishers']));
     }
 
 
@@ -51,8 +54,9 @@ class BookController extends Controller
     public function edit($id)
     {
         $book = Book::findOrFail($id);
+        $publishers = Publisher::all();
 
-        return view('books.edit', compact('book'));
+        return view('books.edit', compact('book', 'publishers'));
     }
 
 
